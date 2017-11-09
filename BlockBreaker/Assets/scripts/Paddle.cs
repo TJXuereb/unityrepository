@@ -22,7 +22,7 @@ public class Paddle : MonoBehaviour {
         Vector3 paddlePosition = new Vector3(2f, this.transform.position.y, 0f);
 
         //make the paddle move with the mouse
-        paddlePosition.x = mousePosinUnits;
+		paddlePosition.x = Mathf.Clamp(mousePosinUnits, -6.5f, 6.5f);
 
         //sets the position of the paddle (this) to paddleposition
         this.transform.position = paddlePosition;
