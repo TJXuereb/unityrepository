@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class loseCollider : MonoBehaviour {
+public class LoseCollider : MonoBehaviour {
 
-    public LevelManager myLevelManager;
+    private LevelManager myLevelManager;
 
     //is called when Collision happens
     void OnCollisionEnter2D(Collision2D collision)
     {
-        print("Collision with " + collision.gameObject.name);
+        print("Collision with "+ collision.gameObject.name);
+        
     }
 
     //is called when Collider is a Trigger
@@ -20,6 +21,8 @@ public class loseCollider : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+
+        myLevelManager = GameObject.FindObjectOfType<LevelManager>();
 		
 	}
 	

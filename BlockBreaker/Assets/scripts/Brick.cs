@@ -4,18 +4,63 @@ using UnityEngine;
 
 public class Brick : MonoBehaviour {
 
-	public int maxHits;
+    public AudioClip crack;
 
-	private int numberOfHits;
+    public int maxHits;
 
-	void OnCollisionEnter2D(Collision2D collision)
-	{
-		numberOfHits++;
-		print (numberOfHits);
-	}
+    private int numberOfHits;
 
-	// Use this for initialization
-	void Start () {
+    private LevelManager myLevelManager;
+
+    bool isBreakable = false;
+
+    public static int breakableCount = 0;
+
+    void SimulateWin()
+    {
+        myLevelManager.LoadNextLevel();
+    }
+
+    void HandleHits()
+    {
+        numberOfHits++;
+        if (numberOfHits >= maxHits)
+        {
+            //decrement the number of breakable bricks
+            breakableCount--;
+            AudioSource.PlayClipAtPoint(crack, this.transform.position);
+            Destroy(this.gameObject);
+
+            myLevelManager.BrickDestroyed();
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        isBreakable = (this.tag == "Break");
+
+        if (isBreakable) //if isBreakable == true
+        {
+            HandleHits();
+        }
+        
+
+        
+    }
+
+    // Use this for initialization
+    void Start () {
+
+        myLevelManager = GameObject.FindObjectOfType<LevelManager>();
+
+        numberOfHits = 0;
+
+        isBreakable = (this.tag == "Break");
+
+        if (isBreakable)
+        {
+            breakableCount++;
+        }
 		
 	}
 	
