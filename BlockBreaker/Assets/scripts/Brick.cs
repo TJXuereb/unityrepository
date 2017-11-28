@@ -12,7 +12,7 @@ public class Brick : MonoBehaviour {
 
     private LevelManager myLevelManager;
 
-    bool isBreakable = false;
+    private bool isBreakable = false;
 
     public static int breakableCount = 0;
 
@@ -32,15 +32,18 @@ public class Brick : MonoBehaviour {
             Destroy(this.gameObject);
 
             myLevelManager.BrickDestroyed();
+
+            
         }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        isBreakable = (this.tag == "Break");
+        //isBreakable = (this.tag == "Break");
 
         if (isBreakable) //if isBreakable == true
         {
+            
             HandleHits();
         }
         
@@ -56,11 +59,14 @@ public class Brick : MonoBehaviour {
         numberOfHits = 0;
 
         isBreakable = (this.tag == "Break");
-
+        
+        //keep track of breakable tags
         if (isBreakable)
         {
             breakableCount++;
+            print(breakableCount);
         }
+
 		
 	}
 	
