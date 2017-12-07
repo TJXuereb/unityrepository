@@ -42,13 +42,13 @@ public class Ball : MonoBehaviour {
         randomX = Random.Range(0f, 0.5f);
         randomY = Random.Range(0f, 0.5f);
 
-        //attaches the object itslef rather than
+        //attaches the object itself rather than
         //having to attach the Paddle myself
         //from Unity
-        myPaddle = GameObject.FindObjectOfType<Paddle>();
+        //myPaddle = GameObject.FindObjectOfType<Paddle>();
 
         //save the distance between the ball and the paddle
-        paddleToBallVector = this.transform.position - myPaddle.transform.position;
+        //paddleToBallVector = this.transform.position - myPaddle.transform.position;
 		
 	}
 	
