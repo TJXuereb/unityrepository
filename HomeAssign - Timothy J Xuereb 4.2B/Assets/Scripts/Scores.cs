@@ -7,13 +7,18 @@ public class Scores : MonoBehaviour {
     public static int Player1 = 0;
     public static int Player2 = 0;
 
+    private LevelManager lm;
+
     public GUISkin layout;
+
+    private GUIStyle guiStyle = new GUIStyle();
 
     GameObject theBall;
 
     // Use this for initialization
     void Start () {
-        theBall = GameObject.FindGameObjectWithTag("Ball");
+        theBall = GameObject.Find("Ball");
+        lm = GameObject.FindObjectOfType<LevelManager>();
     }
 
     public static void Score(string wallID) //detects when ball hits a score point.
@@ -31,16 +36,17 @@ public class Scores : MonoBehaviour {
     void OnGUI()
     {
         GUI.skin = layout;
-        GUI.Label(new Rect(Screen.width / 2 - 150 - 12, 20, 100, 100), "" + Player1);
-        GUI.Label(new Rect(Screen.width / 2 + 150 + 12, 20, 100, 100), "" + Player2);
+        guiStyle.fontSize = 24; //increases Score number size
+        GUI.Label(new Rect(Screen.width / 2 - 150 - 12, 20, 100, 100), "" + Player1, guiStyle);
+        GUI.Label(new Rect(Screen.width / 2 + 150 + 12, 20, 100, 100), "" + Player2, guiStyle); //labels for Score numbers
 
         if (Player1 == 3)
         {
-            //levelmanager here (go to next level)
+            lm.LoadNextLevel();
         }
         else if (Player2 == 3)
         {
-            //levelmanager here (go to next level)
+            lm.LoadNextLevel();
         }
     }
 

@@ -6,17 +6,17 @@ public class BallControl : MonoBehaviour {
 
     private Rigidbody2D rb2d;
     private Vector2 vel;
-
+    public float speed = 50;
     void GoBall()
     {
         float rand = Random.Range(0, 2);
         if (rand < 1)
         {
-            rb2d.AddForce(new Vector2(20, -15));
+            rb2d.AddForce(new Vector2(10, -15));
         }
         else
         {
-            rb2d.AddForce(new Vector2(-20, -15));
+            rb2d.AddForce(new Vector2(-10, -15));
         }
     }
 
@@ -24,11 +24,13 @@ public class BallControl : MonoBehaviour {
     void Start () {
         rb2d = GetComponent<Rigidbody2D>();
         Invoke("GoBall", 2);
+        GetComponent<Rigidbody2D>().velocity = Vector2.right * speed;
     }
 
     void ResetBall()
     {
         vel = Vector2.zero;
+        rb2d = GetComponent<Rigidbody2D>();
         rb2d.velocity = vel;
         transform.position = Vector2.zero;
     }
