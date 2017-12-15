@@ -17,6 +17,8 @@ public class Scores : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        Player1 = 0;
+        Player2 = 0;
         theBall = GameObject.Find("Ball");
         lm = GameObject.FindObjectOfType<LevelManager>();
     }

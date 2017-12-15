@@ -17,14 +17,14 @@ public class LevelManager : MonoBehaviour {
         SceneManager.LoadScene(levelName);
     }
 
-    public void BrickDestroyed()
+    /*public void BrickDestroyed()
     {
         //calling static variable breakableCount
         if (Brick.breakableCount <=0)
         {
             LoadNextLevel();
         }
-    }
+    }*/
 
     public void QuitGame()
     {
