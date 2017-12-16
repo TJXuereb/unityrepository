@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TriggerScore : MonoBehaviour {
 
-    void OnTriggerEnter2D(Collider2D hitInfo)
+    void OnTriggerEnter2D(Collider2D hitInfo) //acknowledges that ball hit the score area
     {
         if (hitInfo.name == "Ball")
         {

@@ -17,7 +17,7 @@ public class KeyPaddle : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        var vel = rb2d.velocity;
+        var vel = rb2d.velocity; //moving paddle with keys "W" and "S" with above set speed
         if (Input.GetKey(moveUp))
         {
             vel.y = speed;

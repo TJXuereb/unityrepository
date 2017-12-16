@@ -17,7 +17,7 @@ public class Scores : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        Player1 = 0;
+        Player1 = 0; //starts the level with 0 scores
         Player2 = 0;
         theBall = GameObject.Find("Ball");
         lm = GameObject.FindObjectOfType<LevelManager>();
@@ -25,7 +25,7 @@ public class Scores : MonoBehaviour {
 
     public static void Score(string wallID) //detects when ball hits a score point.
     {
-        if (wallID == "RightWall")
+        if (wallID == "RightWall") //if ball hits right wall, player1 gets 1 point, if not right wall means left wall was triggered so player2 gets 1 point.
         {
             Player1++;
         }
@@ -42,7 +42,7 @@ public class Scores : MonoBehaviour {
         GUI.Label(new Rect(Screen.width / 2 - 150 - 12, 20, 100, 100), "" + Player1, guiStyle);
         GUI.Label(new Rect(Screen.width / 2 + 150 + 12, 20, 100, 100), "" + Player2, guiStyle); //labels for Score numbers
 
-        if (Player1 == 3)
+        if (Player1 == 3) //when a player gets 3 points, advances to next level
         {
             lm.LoadNextLevel();
         }
